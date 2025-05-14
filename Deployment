@@ -1,0 +1,9 @@
+import gradio as gr
+
+def recognize_digit(image):
+    image = image.reshape(1, 28, 28, 1)
+    pred = model.predict(image)
+    return np.argmax(pred)
+
+interface = gr.Interface(fn=recognize_digit, inputs="sketchpad", outputs="label")
+interface.launch()
